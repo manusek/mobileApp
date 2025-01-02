@@ -14,7 +14,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:lineSpacingExtra="8dp"
-        android:text="Top Exercises"
+        android:text="Ćwiczenia"
         android:textColor="#000"
         android:textSize="28sp"
         app:fontFamily="@font/audiowide"
@@ -28,7 +28,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="8dp"
-        android:text="Easy Exercises 4 Beginners."
+        android:text="Ćwiczenia dla początkujących i nie tylko."
         android:textColor="#3A3A3A"
         android:textSize="17sp"
         app:fontFamily="sans-serif"
@@ -39,23 +39,22 @@
         android:id="@+id/divpage"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="26dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="26dp"
         android:background="#25293E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subtitlepage"
-        />
+        app:layout_constraintTop_toBottomOf="@id/subtitlepage" />
 
     <TextView
         android:id="@+id/intropage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         android:lineSpacingExtra="8dp"
-        android:text="Introduction"
+        android:text="Zacznij juz teraz!"
         android:textColor="#000"
         android:textSize="24sp"
         app:fontFamily="@font/audiowide"
@@ -69,7 +68,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="6dp"
         android:lineSpacingExtra="5dp"
-        android:text="You can add here whatever related  \nto your exercises."
+        android:text="Wybierz ćwiczenie i naciśnij START"
         android:textColor="#3A3A3A"
         android:textSize="16sp"
         app:fontFamily="sans-serif"
@@ -104,7 +103,7 @@
                 android:id="@+id/fitonetitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chest Workout"
+                android:text="Wyciskanie sztangi"
                 android:textColor="#000000"
                 android:textSize="17sp"
                 app:fontFamily="@font/audiowide" />
@@ -114,10 +113,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="3 To 13 Minutes"
+                android:text="3 - 13 Minut"
                 android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -151,7 +149,7 @@
                 android:id="@+id/fittwotitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bicep Workout"
+                android:text="Uginanie sztangi"
                 android:textColor="#000000"
                 android:textSize="17sp"
                 app:fontFamily="@font/audiowide" />
@@ -160,11 +158,10 @@
                 android:id="@+id/fittwodesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4 To 14 Minutes"
                 android:layout_marginTop="5dp"
+                android:text="4 - 14 Minut"
                 android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -198,7 +195,7 @@
                 android:id="@+id/fitthreetitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shoulder Workout"
+                android:text="Wyciskanie hantli"
                 android:textColor="#000000"
                 android:textSize="17sp"
                 app:fontFamily="@font/audiowide" />
@@ -207,11 +204,10 @@
                 android:id="@+id/fitthreedesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5 To 15 Minutes"
                 android:layout_marginTop="5dp"
+                android:text="5 - 15 Minut"
                 android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                 />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -245,7 +241,7 @@
                 android:id="@+id/fitfourtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Leg Workout"
+                android:text="Wyprosty na maszynie"
                 android:textColor="#000000"
                 android:textSize="17sp"
                 app:fontFamily="@font/audiowide" />
@@ -254,11 +250,10 @@
                 android:id="@+id/fitfourdesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10 To 25 Minutes"
                 android:layout_marginTop="5dp"
+                android:text="10 - 25 Minut"
                 android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -279,18 +274,30 @@
         android:id="@+id/btnexercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:text="CONTINUE WORKOUT"
+        android:text="START"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:fontFamily="@font/audiowide"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/bmiCalculator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="5dp"
+        android:text="Oblicz swoje BMI"
+        android:textColor="#FF1D1D"
+        android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/subtitlepage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
