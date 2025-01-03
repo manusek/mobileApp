@@ -88,9 +88,10 @@
         app:layout_constraintTop_toBottomOf="@+id/subintropage">
 
         <ImageView
-            android:src="@drawable/chest"
+            android:id="@+id/imgone"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/chest" />
 
         <LinearLayout
             android:layout_marginLeft="12dp"
@@ -134,9 +135,10 @@
         app:layout_constraintTop_toBottomOf="@+id/fitone">
 
         <ImageView
-            android:src="@drawable/bicep"
+            android:id="@+id/imgtwo"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/bicep" />
 
         <LinearLayout
             android:layout_marginLeft="12dp"
@@ -180,9 +182,10 @@
         app:layout_constraintTop_toBottomOf="@+id/fittwo">
 
         <ImageView
-            android:src="@drawable/shoulder"
+            android:id="@+id/imgthree"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/shoulder" />
 
         <LinearLayout
             android:layout_marginLeft="12dp"
@@ -226,9 +229,10 @@
         app:layout_constraintTop_toBottomOf="@+id/fitthree">
 
         <ImageView
-            android:src="@drawable/leg"
+            android:id="@+id/imgfour"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            android:src="@drawable/leg" />
 
         <LinearLayout
             android:layout_marginLeft="12dp"

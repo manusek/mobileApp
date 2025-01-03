@@ -35,7 +35,13 @@ public class WorkoutAct extends AppCompatActivity {
             "shoulder.jpg",
             "leg.jpg"
     };
-
+    //dodałem
+    int[] exerciseImageId = {
+            R.id.imgone,
+            R.id.imgtwo,
+            R.id.imgthree,
+            R.id.imgfour
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +114,8 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this, StartWorkAct.class);
                 a.putExtra("EXERCISE_TITLE", exerciseTitles[0]);  // Wybrany tytuł ćwiczenia
                 a.putExtra("EXERCISE_DESC", exerciseDescriptions[0]);  // Wybrany opis ćwiczenia
-//                a.putExtra("EXERCISE_IMAGE", exerciseImages[0]);  // Wybrana nazwa obrazu
+                a.putExtra("EXERCISE_IMAGE", exerciseImages[0]);  // Wybrana nazwa obrazu
+                a.putExtra("EXERCISE_IMAGE_ID",exerciseImageId[0]); // wybrane zdj
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
             }
@@ -120,7 +127,8 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this, StartWorkAct.class);
                 a.putExtra("EXERCISE_TITLE", exerciseTitles[1]);  // Wybrany tytuł ćwiczenia
                 a.putExtra("EXERCISE_DESC", exerciseDescriptions[1]);  // Wybrany opis ćwiczenia
-//                a.putExtra("EXERCISE_IMAGE", exerciseImages[1]);  // Wybrana nazwa obrazu
+                    a.putExtra("EXERCISE_IMAGE", exerciseImages[1]);  // Wybrana nazwa obrazu
+                a.putExtra("EXERCISE_IMAGE_ID" ,exerciseImageId[1]); // wybrane zdj
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
             }
@@ -132,7 +140,7 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this, StartWorkAct.class);
                 a.putExtra("EXERCISE_TITLE", exerciseTitles[2]);  // Wybrany tytuł ćwiczenia
                 a.putExtra("EXERCISE_DESC", exerciseDescriptions[2]);  // Wybrany opis ćwiczenia
-//                a.putExtra("EXERCISE_IMAGE", exerciseImages[2]);  // Wybrana nazwa obrazu
+                a.putExtra("EXERCISE_IMAGE", exerciseImages[2]);  // Wybrana nazwa obrazu
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
             }
@@ -144,7 +152,7 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this, StartWorkAct.class);
                 a.putExtra("EXERCISE_TITLE", exerciseTitles[3]);  // Wybrany tytuł ćwiczenia
                 a.putExtra("EXERCISE_DESC", exerciseDescriptions[3]);  // Wybrany opis ćwiczenia
-//                a.putExtra("EXERCISE_IMAGE", exerciseImages[3]);  // Wybrana nazwa obrazu
+                a.putExtra("EXERCISE_IMAGE", exerciseImages[3]);  // Wybrana nazwa obrazu
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
             }

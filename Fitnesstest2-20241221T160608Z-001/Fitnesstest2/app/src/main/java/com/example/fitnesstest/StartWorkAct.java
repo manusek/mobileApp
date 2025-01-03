@@ -46,9 +46,12 @@ public class StartWorkAct extends AppCompatActivity {
         String exerciseTitle = intent.getStringExtra("EXERCISE_TITLE");
         String exerciseDesc = intent.getStringExtra("EXERCISE_DESC");
 
+
         // Ustawienie tytułu i opisu ćwiczenia w widokach
         fitonetitle.setText(exerciseTitle);
         fitonedesc.setText(exerciseDesc);
+
+
 
         //Load Animations
         btthree = AnimationUtils.loadAnimation(this, R.anim.btthree);
