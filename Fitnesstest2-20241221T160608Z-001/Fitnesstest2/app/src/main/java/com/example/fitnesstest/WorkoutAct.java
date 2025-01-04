@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class WorkoutAct extends AppCompatActivity {
 
-    TextView titlepage, subtitlepage, intropage, subintropage, btnexercise, fitonetitle, fitonedesc, fittwotitle, fittwodesc, fitthreetitle,
+    TextView titlepage, subtitlepage, intropage, subintropage, fitonetitle, fitonedesc, fittwotitle, fittwodesc, fitthreetitle,
     fitthreedesc, fitfourtitle, fitfourdesc, bmiCalculator;
 
     View divpage, bgprogress;
@@ -35,12 +35,20 @@ public class WorkoutAct extends AppCompatActivity {
             "shoulder.jpg",
             "leg.jpg"
     };
+
+    String[] exerciseDescriptions2 = {
+            "Ćwiczenie na klatkę piersiową, które angażuje również mięśnie tricepsów i barków.\n Idealne dla budowania siły i masy mięśniowej.",
+            "Skuteczne ćwiczenie na bicepsy, które zwiększa siłę i objętość ramion. Wykonywane \n w pozycji stojącej dla lepszej izolacji mięśni.",
+            "Alternatywa dla wyciskania sztangi, pozwalająca na większy zakres ruchu i równomierny\n rozwój mięśni klatki piersiowej.",
+            "Doskonałe ćwiczenie na mięśnie nóg, szczególnie na czworogłowe uda. Idealne do poprawy\n siły i stabilności kończyn dolnych."
+    };
+
     //dodałem
     int[] exerciseImageId = {
-            R.id.imgone,
-            R.id.imgtwo,
-            R.id.imgthree,
-            R.id.imgfour
+            R.drawable.chest,
+            R.drawable.bicep,
+            R.drawable.shoulder,
+            R.drawable.leg
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +69,6 @@ public class WorkoutAct extends AppCompatActivity {
         bmiCalculator = (TextView) findViewById(R.id.bmiCalculator);
         intropage = (TextView) findViewById(R.id.intropage);
         subintropage = (TextView) findViewById(R.id.subintropage);
-        btnexercise = (TextView) findViewById(R.id.btnexercise);
         fitonetitle = (TextView) findViewById(R.id.fitonetitle);
         fitonedesc = (TextView) findViewById(R.id.fitonedesc);
         fittwotitle = (TextView) findViewById(R.id.fittwotitle);
@@ -70,17 +77,6 @@ public class WorkoutAct extends AppCompatActivity {
         fitthreedesc = (TextView) findViewById(R.id.fitthreedesc);
         fitfourtitle = (TextView) findViewById(R.id.fitfourtitle);
         fitfourdesc = (TextView) findViewById(R.id.fitfourdesc);
-
-        //give an event to another page
-        btnexercise.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent a = new Intent(WorkoutAct.this,StartWorkAct.class);
-                a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(a);
-            }
-        });
-
 
         fitone = (LinearLayout) findViewById(R.id.fitone);
         fittwo = (LinearLayout) findViewById(R.id.fittwo);
@@ -104,7 +100,6 @@ public class WorkoutAct extends AppCompatActivity {
         fitthree.startAnimation(bttfive);
         fitfour.startAnimation(bttsix);
 
-        btnexercise.startAnimation(btteight);
         bgprogress.startAnimation(bttseven);
 
 
@@ -114,6 +109,7 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this, StartWorkAct.class);
                 a.putExtra("EXERCISE_TITLE", exerciseTitles[0]);  // Wybrany tytuł ćwiczenia
                 a.putExtra("EXERCISE_DESC", exerciseDescriptions[0]);  // Wybrany opis ćwiczenia
+                a.putExtra("EXERCISE_DESC2", exerciseDescriptions2[0]);  // Wybrany opis ćwiczenia
                 a.putExtra("EXERCISE_IMAGE", exerciseImages[0]);  // Wybrana nazwa obrazu
                 a.putExtra("EXERCISE_IMAGE_ID",exerciseImageId[0]); // wybrane zdj
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -127,7 +123,8 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this, StartWorkAct.class);
                 a.putExtra("EXERCISE_TITLE", exerciseTitles[1]);  // Wybrany tytuł ćwiczenia
                 a.putExtra("EXERCISE_DESC", exerciseDescriptions[1]);  // Wybrany opis ćwiczenia
-                    a.putExtra("EXERCISE_IMAGE", exerciseImages[1]);  // Wybrana nazwa obrazu
+                a.putExtra("EXERCISE_DESC2", exerciseDescriptions2[1]);  // Wybrany opis ćwiczenia
+                a.putExtra("EXERCISE_IMAGE", exerciseImages[1]);  // Wybrana nazwa obrazu
                 a.putExtra("EXERCISE_IMAGE_ID" ,exerciseImageId[1]); // wybrane zdj
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
@@ -140,7 +137,9 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this, StartWorkAct.class);
                 a.putExtra("EXERCISE_TITLE", exerciseTitles[2]);  // Wybrany tytuł ćwiczenia
                 a.putExtra("EXERCISE_DESC", exerciseDescriptions[2]);  // Wybrany opis ćwiczenia
+                a.putExtra("EXERCISE_DESC2", exerciseDescriptions2[2]);  // Wybrany opis ćwiczenia
                 a.putExtra("EXERCISE_IMAGE", exerciseImages[2]);  // Wybrana nazwa obrazu
+                a.putExtra("EXERCISE_IMAGE_ID" ,exerciseImageId[2]); // wybrane zdj
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
             }
@@ -152,7 +151,9 @@ public class WorkoutAct extends AppCompatActivity {
                 Intent a = new Intent(WorkoutAct.this, StartWorkAct.class);
                 a.putExtra("EXERCISE_TITLE", exerciseTitles[3]);  // Wybrany tytuł ćwiczenia
                 a.putExtra("EXERCISE_DESC", exerciseDescriptions[3]);  // Wybrany opis ćwiczenia
+                a.putExtra("EXERCISE_DESC2", exerciseDescriptions2[3]);  // Wybrany opis ćwiczenia
                 a.putExtra("EXERCISE_IMAGE", exerciseImages[3]);  // Wybrana nazwa obrazu
+                a.putExtra("EXERCISE_IMAGE_ID" ,exerciseImageId[3]); // wybrane zdj
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
             }

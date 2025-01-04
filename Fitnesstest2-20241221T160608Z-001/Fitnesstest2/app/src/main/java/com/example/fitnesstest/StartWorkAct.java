@@ -9,8 +9,10 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,15 +20,25 @@ import java.util.Locale;
 
 public class StartWorkAct extends AppCompatActivity {
 
-    TextView intropage, subintropage, fitonetitle, fitonedesc, timerValue, btnexercise, startExercise;
+    TextView intropage, subintropage, fitonetitle, fitonedesc, timerValue, btnexercise, startExercise, levelLabel;
     View divpage, bgprogress;
     LinearLayout fitone;
     ImageView imgTimer;
 
-    private static final long START_TIME_IN_MILLIS = 50000;
+    Spinner levelSpinner;
+
+//    private static final long START_TIME_IN_MILLIS = 50000;
     private CountDownTimer countDownTimer;
     private boolean mTimerRunning;
-    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+//    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+
+    private static final long BEGINNER_TIME_IN_MILLIS = 60000; // 10 minut
+    private static final long INTERMEDIATE_TIME_IN_MILLIS = 90000; // 15 minut
+    private static final long ADVANCED_TIME_IN_MILLIS = 120000; // 20 minut
+
+    private long START_TIME_IN_MILLIS = BEGINNER_TIME_IN_MILLIS; // Domyślnie dla początkujących
+    private long mTimeLeftInMillis = START_TIME_IN_MILLIS; // Aktualny czas do odliczania
+
 
     Animation btthree, bttfour, bttfive, ttbone, ttbtwo, alphago;
 
@@ -39,17 +51,33 @@ public class StartWorkAct extends AppCompatActivity {
         // Inicjalizacja widoków
         fitonetitle = findViewById(R.id.fitonetitle);
         fitonedesc = findViewById(R.id.fitonedesc);
+        subintropage = findViewById(R.id.subintropage);
+
 //        ImageView exerciseImage = findViewById(R.id.exerciseImage);  // ImageView do wyświetlania obrazu
 
         // Pobranie danych z Intent
         Intent intent = getIntent();
         String exerciseTitle = intent.getStringExtra("EXERCISE_TITLE");
         String exerciseDesc = intent.getStringExtra("EXERCISE_DESC");
+        String exerciseDesc2 = intent.getStringExtra("EXERCISE_DESC2");
+        int exerciseImageId = getIntent().getIntExtra("EXERCISE_IMAGE_ID", -1);
+        ImageView exerciseImageView = findViewById(R.id.exerciseImageView);
+
+        // Sprawdzenie, czy identyfikator obrazu jest prawidłowy
+        if (exerciseImageId != -1) {
+            // Ustawienie obrazu w ImageView
+            exerciseImageView.setImageResource(exerciseImageId);
+        } else {
+            Toast.makeText(this, "Nie udało się załadować obrazu", Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
         // Ustawienie tytułu i opisu ćwiczenia w widokach
         fitonetitle.setText(exerciseTitle);
         fitonedesc.setText(exerciseDesc);
+        subintropage.setText(exerciseDesc2);
 
 
 
@@ -63,6 +91,8 @@ public class StartWorkAct extends AppCompatActivity {
 
         intropage = (TextView) findViewById(R.id.intropage);
         subintropage = (TextView) findViewById(R.id.subintropage);
+        levelLabel = (TextView) findViewById(R.id.levelLabel);
+        levelSpinner = (Spinner) findViewById(R.id.levelSpinner);
         fitonetitle = (TextView) findViewById(R.id.fitonetitle);
         fitonedesc = (TextView) findViewById(R.id.fitonedesc);
         timerValue = (TextView) findViewById(R.id.timerValue);
@@ -83,6 +113,8 @@ public class StartWorkAct extends AppCompatActivity {
         fitone.startAnimation(ttbone);
         intropage.startAnimation(ttbtwo);
         subintropage.startAnimation(ttbtwo);
+        levelLabel.startAnimation(ttbtwo);
+        levelSpinner.startAnimation(ttbtwo);
         divpage.startAnimation(ttbtwo);
         timerValue.startAnimation(alphago);
         imgTimer.startAnimation(alphago);
@@ -110,6 +142,41 @@ public class StartWorkAct extends AppCompatActivity {
                 }
             }
         });
+
+        Spinner levelSpinner = findViewById(R.id.levelSpinner);
+        levelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedLevel = parent.getItemAtPosition(position).toString();
+
+                // Ustaw czas początkowy na podstawie wybranego poziomu
+                switch (selectedLevel) {
+                    case "Początkujący":
+                        START_TIME_IN_MILLIS = BEGINNER_TIME_IN_MILLIS;
+                        break;
+                    case "Średniozaawansowany":
+                        START_TIME_IN_MILLIS = INTERMEDIATE_TIME_IN_MILLIS;
+                        break;
+                    case "Zaawansowany":
+                        START_TIME_IN_MILLIS = ADVANCED_TIME_IN_MILLIS;
+                        break;
+                }
+
+                // Resetuj timer z nowym czasem
+                mTimeLeftInMillis = START_TIME_IN_MILLIS;
+                resetTimer();
+
+                // Poinformuj użytkownika o zmianie czasu
+                Toast.makeText(StartWorkAct.this, "Ustawiono czas: " +
+                        (START_TIME_IN_MILLIS / 60000) + " minut", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Obsługa sytuacji, gdy nic nie zostało wybrane (opcjonalnie)
+            }
+        });
+
 
     }
 

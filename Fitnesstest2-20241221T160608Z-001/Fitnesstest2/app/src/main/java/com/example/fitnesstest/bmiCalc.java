@@ -69,10 +69,6 @@ public class bmiCalc extends AppCompatActivity {
                 }
             }
         });
-
-// Funkcja zwracająca kategorię BMI
-
-
     }
     private String getBmiCategory(float bmi) {
         if (bmi < 18.5) {

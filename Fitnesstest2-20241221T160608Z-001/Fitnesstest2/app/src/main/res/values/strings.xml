@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Fitness test</string>
+
+
+        <string-array name="levels_array">
+            <item>Początkujący</item>
+            <item>Średniozaawansowany</item>
+            <item>Zaawansowany</item>
+        </string-array>
+
+
 </resources>
