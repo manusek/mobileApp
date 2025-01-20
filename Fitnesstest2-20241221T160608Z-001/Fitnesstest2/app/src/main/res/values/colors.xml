@@ -5,4 +5,12 @@
     <color name="colorAccent">#373737</color>
 
     <color name="Black">#000000</color>
+
+    <!-- Kolory aplikacji -->
+    <color name="blue">#2196F3</color> <!-- Kolor dla niedowagi -->
+    <color name="green">#4CAF50</color> <!-- Kolor dla prawidłowej masy ciała -->
+    <color name="yellow">#FFEB3B</color> <!-- Kolor dla nadwagi -->
+    <color name="orange">#FF9800</color> <!-- Kolor dla otyłości I stopnia -->
+    <color name="red">#F44336</color> <!-- Kolor dla otyłości II stopnia -->
+    <color name="dark_red">#B71C1C</color> <!-- Kolor dla otyłości III stopnia -->
 </resources>

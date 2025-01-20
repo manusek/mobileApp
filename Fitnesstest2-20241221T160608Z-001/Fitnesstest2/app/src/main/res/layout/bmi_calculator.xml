@@ -17,6 +17,7 @@
         android:text="Kalkulator BMI"
         android:textColor="#000000"
         android:textSize="24sp"
+        app:fontFamily="@font/audiowide"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -82,6 +83,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="44dp"
         android:text="Waga(kg)"
+        app:fontFamily="@font/audiowide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -93,6 +95,7 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="140dp"
         android:text="Wzrost(cm)"
+        app:fontFamily="@font/audiowide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -153,13 +156,42 @@
         android:id="@+id/buttonTextBmi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginLeft="138dp"
+        android:layout_marginTop="31dp"
         android:text="Oblicz BMI"
         android:textColor="#FFFEFE"
         android:textSize="24sp"
+        app:fontFamily="@font/audiowide"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+
+    <ProgressBar
+        android:id="@+id/bmiProgressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:max="40"
+        android:progress="0"
+        android:progressTint="@color/green"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTextBmi"
+        tools:layout_editor_absoluteX="16dp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="283dp"
+        android:layout_height="219dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/bgprogress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bmi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

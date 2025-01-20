@@ -39,7 +39,8 @@ public class StartWorkAct extends AppCompatActivity {
     private long START_TIME_IN_MILLIS = BEGINNER_TIME_IN_MILLIS; // Domyślnie dla początkujących
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS; // Aktualny czas do odliczania
 
-
+    private static final long BREAK_TIME_IN_MILLIS = 15000; // 15 sekund
+    private boolean isBreakTime = false; // Flaga określająca, czy aktualnie trwa przerwa
     Animation btthree, bttfour, bttfive, ttbone, ttbtwo, alphago;
 
     @SuppressLint("MissingInflatedId")
@@ -138,7 +139,7 @@ public class StartWorkAct extends AppCompatActivity {
                     startExercise.setText("START"); // Zmień tekst przycisku
                 } else {
                     startTimer(); // Jeśli timer nie działa, uruchom go
-                    startExercise.setText("STOP"); // Zmień tekst przycisku
+                    startExercise.setText("PAUSE"); // Zmień tekst przycisku
                 }
             }
         });
@@ -180,18 +181,56 @@ public class StartWorkAct extends AppCompatActivity {
 
     }
 
-    private void startTimer(){
+    private void startTimer() {
         countDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
+
+                // Wyznacz sekundę dla animacji wskaźnika
+                int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+
             }
 
             @Override
             public void onFinish() {
-                Toast.makeText(getApplicationContext(),"KONIEC!", Toast.LENGTH_SHORT).show();
-                resetTimer();
+                if (!isBreakTime) {
+                    // Po zakończeniu głównego odliczania, uruchom przerwę
+                    Toast.makeText(getApplicationContext(), "KONIEC! Rozpoczyna się przerwa.", Toast.LENGTH_SHORT).show();
+                    startBreakTimer();
+                } else {
+                    // Po zakończeniu przerwy, zresetuj timer
+                    Toast.makeText(getApplicationContext(), "Przerwa zakończona!", Toast.LENGTH_SHORT).show();
+                    resetTimer();
+                }
+            }
+        }.start();
+        mTimerRunning = true;
+    }
+
+    private void startBreakTimer() {
+        isBreakTime = true; // Ustaw flagę na przerwę
+        mTimeLeftInMillis = BREAK_TIME_IN_MILLIS; // Ustaw czas przerwy
+        updateCountDownText();
+
+        countDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+
+                // Wyznacz sekundę dla animacji wskaźnika
+                int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+
+            }
+
+            @Override
+            public void onFinish() {
+                // Po zakończeniu przerwy
+                Toast.makeText(getApplicationContext(), "Przerwa zakończona!", Toast.LENGTH_SHORT).show();
+                isBreakTime = false; // Resetuj flagę
+                resetTimer(); // Zresetuj główny timer
             }
         }.start();
         mTimerRunning = true;
@@ -216,9 +255,9 @@ public class StartWorkAct extends AppCompatActivity {
         mTimeLeftInMillis = START_TIME_IN_MILLIS; // Przywróć czas początkowy
         updateCountDownText(); // Zaktualizuj tekst wyświetlany na ekranie
         mTimerRunning = false; // Ustaw stan timera na "nie działa"
+        isBreakTime = false; // Resetuj flagę przerwy
         startExercise.setText("START");
     }
-
 
 
 }

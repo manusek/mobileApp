@@ -11,23 +11,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- Aktywność StartWorkAct - brak intent filter, brak potrzeby dodawania android:exported -->
-        <activity android:name=".StartWorkAct"></activity>
+        <!-- Aktywność StartWorkAct - brak intent filter -->
+        <activity
+            android:name=".StartWorkAct"
+            android:exported="false" /> <!-- Dla przejrzystości ustawiamy explicite -->
 
-        <!-- Aktywność WorkoutAct - brak intent filter, brak potrzeby dodawania android:exported -->
-        <activity android:name=".WorkoutAct" />
+        <!-- Aktywność WorkoutAct - brak intent filter -->
+        <activity
+            android:name=".WorkoutAct"
+            android:exported="false" /> <!-- Dla przejrzystości ustawiamy explicite -->
 
-        <!-- Aktywność MainActivity - dodajemy android:exported z wartością true -->
-        <activity android:name=".MainActivity"
-            android:exported="true">  <!-- Zmieniony wiersz -->
+        <!-- Aktywność MainActivity - intent filter wymaga android:exported -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"> <!-- Wymagane przy intent filter -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".bmiCalc" />
+        <!-- Aktywność bmiCalc - brak intent filter -->
+        <activity
+            android:name=".bmiCalc"
+            android:exported="false" /> <!-- Dla przejrzystości ustawiamy explicite -->
 
+        <!-- Meta-dane -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

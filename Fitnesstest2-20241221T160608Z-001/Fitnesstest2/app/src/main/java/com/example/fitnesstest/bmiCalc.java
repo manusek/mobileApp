@@ -1,9 +1,11 @@
 package com.example.fitnesstest;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,7 @@ public class bmiCalc extends AppCompatActivity {
 
     TextView bmititle, bntexcercise, btnCalculateBmi, bmiResult;
     EditText weightInput, heightInput;
+    ProgressBar bmiProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class bmiCalc extends AppCompatActivity {
         bmiResult = findViewById(R.id.bmiResult);
         weightInput = findViewById(R.id.editTextNumber);
         heightInput = findViewById(R.id.editTextNumber2);
+        bmiProgressBar = findViewById(R.id.bmiProgressBar);
 
         // Obsługa przycisku POWRÓT
         btnExercise.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +62,46 @@ public class bmiCalc extends AppCompatActivity {
                             // Wyświetl wynik i kategorię
                             bmiResult.setText("Twoje BMI to: " + String.format("%.2f", bmi) + "\n" + bmiCategory);
                             bmiResult.setVisibility(View.VISIBLE);
+
+                            // Ustaw wartość na ProgressBar
+                            bmiProgressBar.setProgress((int) bmi);
+
+                            // Ustaw widoczność paska
+                            bmiProgressBar.setVisibility(View.VISIBLE);
+
+                            // Zmień kolor paska w zależności od kategorii
+                            if (bmi < 18.5) {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        bmiProgressBar.setProgressTintList(getColorStateList(R.color.blue));
+                                    }
+                                }
+                            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        bmiProgressBar.setProgressTintList(getColorStateList(R.color.green));
+                                    }
+                                }
+                            } else if (bmi >= 25 && bmi <= 29.9) {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        bmiProgressBar.setProgressTintList(getColorStateList(R.color.yellow));
+                                    }
+                                }
+                            } else if (bmi >= 30 && bmi <= 34.9) {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        bmiProgressBar.setProgressTintList(getColorStateList(R.color.orange));
+                                    }
+                                }
+                            } else {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        bmiProgressBar.setProgressTintList(getColorStateList(R.color.red));
+                                    }
+                                }
+                            }
+
                         } else {
                             Toast.makeText(bmiCalc.this, "Wzrost musi być większy niż 0", Toast.LENGTH_SHORT).show();
                         }
@@ -70,16 +114,17 @@ public class bmiCalc extends AppCompatActivity {
             }
         });
     }
+
     private String getBmiCategory(float bmi) {
         if (bmi < 18.5) {
             return "Kategoria: Niedowaga";
-        } else if (bmi >= 18.5 && bmi <= 24.9) {
+        } else if (bmi >= 18.5 && bmi <= 24.99) {
             return "Kategoria: Prawidłowa masa ciała";
-        } else if (bmi >= 25 && bmi <= 29.9) {
+        } else if (bmi >= 25 && bmi <= 29.99) {
             return "Kategoria: Nadwaga";
-        } else if (bmi >= 30 && bmi <= 34.9) {
+        } else if (bmi >= 30 && bmi <= 34.99) {
             return "Kategoria: Otyłość I stopnia";
-        } else if (bmi >= 35 && bmi <= 39.9) {
+        } else if (bmi >= 35 && bmi <= 39.99) {
             return "Kategoria: Otyłość II stopnia";
         } else {
             return "Kategoria: Otyłość III stopnia";

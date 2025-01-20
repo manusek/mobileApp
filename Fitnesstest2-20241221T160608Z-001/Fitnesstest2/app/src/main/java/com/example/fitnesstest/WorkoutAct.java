@@ -95,7 +95,7 @@ public class WorkoutAct extends AppCompatActivity {
         subintropage.startAnimation(bttwo);
         bmiCalculator.startAnimation(bttwo);
 
-        fitone.startAnimation(bttwo);
+        fitone.startAnimation(bttfour);
         fittwo.startAnimation(bttfour);
         fitthree.startAnimation(bttfive);
         fitfour.startAnimation(bttsix);
@@ -158,6 +158,7 @@ public class WorkoutAct extends AppCompatActivity {
                 startActivity(a);
             }
         });
+
 
         bmiCalculator.setOnClickListener(new View.OnClickListener(){
             @Override
